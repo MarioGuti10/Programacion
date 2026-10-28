@@ -11,7 +11,7 @@ public class Aventurero {
 
 
     //Constructor
-     public Aventurero(String nombreAventurero, int vidaActualAventurero, int vidaMaximaAventurero, int damageBaseAventurero, int numPocionesSanacion){
+     public Aventurero(String nombreAventurero, int vidaMaximaAventurero, int damageBaseAventurero, int numPocionesSanacion){
         this.nombreAventurero = nombreAventurero;
         this.vidaActualAventurero = vidaMaximaAventurero;
         this.vidaMaximaAventurero = vidaMaximaAventurero;
@@ -24,16 +24,36 @@ public class Aventurero {
         return atacarEnemigo;
     }
     public void beberPocion(){
-        int beber = 0;
+        int beber;
         if (numPocionesSanacion > 0) {
             beber = numPocionesSanacion - 1;
             vidaActualAventurero = vidaActualAventurero + curacionPocion;
         }
     }
-    public int recibirDamageEnemigo;
+    public int recibirDamageEnemigo(){
+        int recibirDamage = vidaActualAventurero - damageBaseAventurero;
+        return recibirDamage;
+    }
 
+    public boolean estaDerrotadoAventurero(){
+        boolean estaDerrotadoAventurero = false;
+        if (vidaActualAventurero <=  0) {
+            estaDerrotadoAventurero = true;
+        }
+        else{
+            estaDerrotadoAventurero = false;
+        }
+        return estaDerrotadoAventurero;
+    }
 
+    //getters
+    public int getVidaActualAventurero(){
+        return vidaActualAventurero;
+    }
     public int getDamageBaseAventurero(){
-        return this.damageBaseAventurero;
+        return damageBaseAventurero;
+    }
+    public int getNumPocionesSanacion(){
+        return numPocionesSanacion;
     }
 }
